@@ -8,6 +8,13 @@ import Box from '@mui/material/Box';
 
 function MainFeaturedPost(props) {
   const { post } = props;
+  // const { case } = props;
+
+  // const getImageUrl = (category) => {
+  //   case.image.filter((im) => {
+  //     im.category == category;
+  //   });
+  // }
 
   return (
     <Paper
@@ -50,7 +57,7 @@ function MainFeaturedPost(props) {
               {post.description}
             </Typography>
             <Link variant="subtitle1" href="#">
-              {post.linkText}
+              Case reading...
             </Link>
           </Box>
         </Grid>
@@ -59,6 +66,15 @@ function MainFeaturedPost(props) {
   );
 }
 
+// MainFeaturedPost.propTypes = {
+//   case: PropTypes.shape({
+//     id: PropTypes.string.isRequired,
+//     summary: PropTypes.string.isRequired,
+//     images: PropTypes.array.isRequired,
+//     title: PropTypes.string.isRequired,
+//     createdAt: PropTypes.string.isRequired
+//   }).isRequired,
+// };
 MainFeaturedPost.propTypes = {
   post: PropTypes.shape({
     description: PropTypes.string.isRequired,

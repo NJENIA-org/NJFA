@@ -9,7 +9,7 @@ export default function Blogid({ blog }) {
       <div
         className={styles.post}
         dangerouslySetInnerHTML={{
-          __html: `${blog.body}`
+          __html: `${blog.details}`
         }}
       />  
     </main>
@@ -17,7 +17,7 @@ export default function Blogid({ blog }) {
 }
 
 export async function getStaticPaths(){
-  const data = await client.get({ endpoint: "blog"});
+  const data = await client.get({ endpoint: "news"});
 
   const paths = data.contents.map((content) => { return { params: {"id": content.id}} });
   // console.log(paths)
@@ -26,7 +26,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
   const id = context.params.id;
-  const data = await client.get({ endpoint: 'blog', contentId: id});
+  const data = await client.get({ endpoint: 'news', contentId: id});
   
   return {
     props: {

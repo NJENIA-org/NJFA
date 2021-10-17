@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider';
 
 function Main(props) {
   const { posts, title } = props;
-  console.log(posts)
+  // console.log(posts)
 
   return (
     <Grid

@@ -100,7 +100,7 @@ export default function Home({ news, about, aboutImages, blog, caseStudies, cms 
             <main>
               <MainFeaturedPost post={mainFeaturedPost} />
               <News news={news}></News>
-              <About about={about[0]} ></About>
+              <About about={about} ></About>
               <AboutImages aboutImages={aboutImages}></AboutImages>
               <Grid container spacing={4}>
                 {cases.map((c) => (

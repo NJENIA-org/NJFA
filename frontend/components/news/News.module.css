@@ -1,4 +1,8 @@
 .news {
-    font-size: 200%;
-    font-weight: 900;
+    margin-top: -26pt;
+    font-size: large;
+}
+
+.area {
+    padding-bottom: 20pt;
 }

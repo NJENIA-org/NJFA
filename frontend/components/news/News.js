@@ -1,28 +1,45 @@
 import styles from "./News.module.css"
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { List } from "@mui/material";
+
+function formatTime(time) {
+    var result = time.split('T')
+    return result[0]
+}
 
 export default function News({ news }) {
-    console.log(news)
     return (
-        // <Box sx={{ flexGrow: 1 }}>
+        <div className={styles.area}>
             <Grid container spaceing={1}>
-                <Grid item xs={5} md={3}>
-                    News
+                <Grid item xs={5} md={3} >
+                    <div className={styles.news}>
+                        <h1>News</h1>
+                    </div>
                 </Grid>
-
                 <Grid item xs={7} md={9}>
-                    <Grid container spaceing={1}>
-                        <Grid item xs={5} md={3}>
-                            date
+                    <List sx={{ maxHeight: 200, overflow: 'auto' }} disablePadding>
+                        <Grid container spaceing={1}>
+                            <Grid item xs={5} md={3}>
+                                {news.map((item) => (
+                                    <ListItem disablePadding>
+                                        <ListItemText primary={formatTime(item.publishedAt)} />
+                                    </ListItem>
+                                ))}
+                            </Grid>
+                            <Grid item xs={7} md={9}>
+                                {news.map((item) => (
+                                    <ListItem disablePadding>
+                                        <ListItemText primary={item.title} />
+                                    </ListItem>
+                                ))}
+                            </Grid>
                         </Grid>
-                        <Grid item xs={7} md={9}>
-                            title
-                        </Grid>
-                    </Grid>
+                    </List>
                 </Grid>
             </Grid>
-        // </Box>
+        </div>
 
     )
 }

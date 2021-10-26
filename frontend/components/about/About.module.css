@@ -1,0 +1,15 @@
+.about {
+    display: flex;
+}
+
+.aboutChar {
+    font-size: 200%;
+    font-weight: 900;
+}
+
+.catchcopy {
+    font-size: 200%;
+    font-weight: 900;
+    margin-left: 15% ;
+    word-break: break-all;
+}

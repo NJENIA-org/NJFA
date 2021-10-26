@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { client } from "../libs/client";
 
-import Footer from '../components/blog/footer';
+import Footer from '../components/blog/Footer';
 import Header from '../components/blog/Header';
 import MainFeaturedPost from '../components/blog/MainFeaturedPost';
 import FeaturedPost from '../components/blog/FeaturedPost';
@@ -19,6 +19,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Blog from "../components/blog/Blog";
+import About from '../components/about/About';
+import AboutImages from '../components/about/AboutImages';
+import News from '../components/news/News';
 
 const sections = [
   { title: 'About', url: '#' },
@@ -81,9 +84,7 @@ const sidebar = {
 
 const theme = createTheme();
 
-export default function Home( { blog, caseStudies, cms } ) {
-  // console.log(blog)
-  console.log(caseStudies);
+export default function Home({ news, about, aboutImages, blog, caseStudies, cms }) {
   const cases = caseStudies;
   return (
     <div className={styles.container}>
@@ -92,48 +93,52 @@ export default function Home( { blog, caseStudies, cms } ) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-      <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="NJFA" sections={sections} />
-        <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {cases.map((c) => (
-              <FeaturedPost key={c.title} case={c}/>
-            ))}
-          </Grid>
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="News" posts={blog} />
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </Grid>
-        </main>
-      </Container>
-      <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
-      />
-    </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Container maxWidth="lg">
+            <Header title="NJENIA" sections={sections} />
+            <main>
+              <MainFeaturedPost post={mainFeaturedPost} />
+              <News news={news}></News>
+              <About about={about[0]} ></About>
+              <AboutImages aboutImages={aboutImages}></AboutImages>
+              <Grid container spacing={4}>
+                {cases.map((c) => (
+                  <FeaturedPost key={c.title} case={c} />
+                ))}
+              </Grid>
+              <Grid container spacing={5} sx={{ mt: 3 }}>
+                <Sidebar
+                  title={sidebar.title}
+                  description={sidebar.description}
+                  archives={sidebar.archives}
+                  social={sidebar.social}
+                />
+              </Grid>
+            </main>
+          </Container>
+          <Footer
+            title="Footer"
+            description="Something here to give the footer a purpose!"
+          />
+        </ThemeProvider>
       </div>
       <Footer></Footer>
     </div>
   );
 }
 
-export const getStaticProps = async() => {
-  const data = await client.get({ endpoint: "news"});
+export const getStaticProps = async () => {
+  const about = await client.get({ endpoint: 'about' });
+  const aboutImages = await client.get({ endpoint: 'about_image' });
+  const news = await client.get({ endpoint: "news" });
   const caseStudy = await client.get({ endpoint: "casestudy" });
 
   let filtersCaseIDsQuery = '';
   // console.log(caseStudy);
-  for (const i in caseStudy.contents){
+  for (const i in caseStudy.contents) {
     filtersCaseIDsQuery = `${filtersCaseIDsQuery}casestudy_id[equals]${caseStudy.contents[i].id}`;
-    if( i != caseStudy.contents.length -1 ){
+    if (i != caseStudy.contents.length - 1) {
       filtersCaseIDsQuery += '[or]';
     }
   }
@@ -147,7 +152,7 @@ export const getStaticProps = async() => {
   });
 
   const caseStudies = [];
-  for (const c of caseStudy.contents){
+  for (const c of caseStudy.contents) {
     caseStudies.push({
       id: c.id,
       title: c.title,
@@ -158,19 +163,15 @@ export const getStaticProps = async() => {
     });
   }
 
-
   return {
     props: {
-      blog: data.contents,
+      about: about.contents,
+      aboutImages: aboutImages.contents,
       caseStudies: caseStudies,
-      cms: {
-        posts: data.contents.map((post) => post.title)
-      }
+      news: news.contents
+      // cms: {
+      //   posts: news.contents.map((post) => post.title)
+      // }
     }
   }
-  // return {
-  //   props: {
-  //     blog: data.contents
-  //   }
-  // };
 }

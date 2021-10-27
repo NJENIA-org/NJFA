@@ -18,20 +18,29 @@ export default function News({ news }) {
                         <h1>News</h1>
                     </div>
                 </Grid>
+
                 <Grid item xs={7} md={9}>
                     <List sx={{ maxHeight: 200, overflow: 'auto' }} disablePadding>
                         <Grid container spaceing={1}>
                             <Grid item xs={5} md={3}>
                                 {news.map((item) => (
                                     <ListItem disablePadding>
-                                        <ListItemText primary={formatTime(item.publishedAt)} />
+                                        <ListItemText primary={formatTime(item.publishedAt)} primaryTypographyProps={{
+                                            fontSize: 20,
+                                            fontWeight: 'normal',
+                                            letterSpacing: 0,
+                                        }} />
                                     </ListItem>
                                 ))}
                             </Grid>
                             <Grid item xs={7} md={9}>
                                 {news.map((item) => (
                                     <ListItem disablePadding>
-                                        <ListItemText primary={item.title} />
+                                        <ListItemText primary={item.title} primaryTypographyProps={{
+                                            fontSize: 20,
+                                            fontWeight: 'normal',
+                                            letterSpacing: 0,
+                                        }} />
                                     </ListItem>
                                 ))}
                             </Grid>

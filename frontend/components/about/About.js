@@ -17,7 +17,11 @@ export default function About({ about }) {
 
                     {about.map((item) => (
                         <ListItem disablePadding>
-                            <ListItemText primary={item.catch_copy} />
+                            <ListItemText primary={item.catch_copy} primaryTypographyProps={{
+                                fontSize: 25,
+                                fontWeight: 900,
+                                letterSpacing: 0,
+                            }} />
                         </ListItem>
                     ))}
                 </List>

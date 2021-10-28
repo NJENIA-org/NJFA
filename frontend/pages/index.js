@@ -71,7 +71,7 @@ export default function Home({ news, about, aboutImages, members}) {
               <Divider sx={{ margin: '0 0 10px 0' }} />
               <Typography component="h2" variant="h4" align="left" sx={{ fontWeight: "bold"}}>Case Study</Typography>
               <Grid container spacing={4} justifyContent='center'>
-                <CaseStudyList key={"test"} />
+                <CaseStudyList />
               </Grid>
               <Divider sx={{ margin: '10px' }} />
               <Typography component="h2" variant="h4" align="left" sx={{ margin: '0 0 10px 0', fontWeight: "bold" }} >Member</Typography>

@@ -1,34 +1,25 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import { client } from "../libs/client";
 
-import Footer from '../components/blog/Footer';
-import Header from '../components/blog/Header';
 import MainFeaturedPost from '../components/blog/MainFeaturedPost';
-import FeaturedPost from '../components/blog/FeaturedPost';
-import Main from '../components/blog/Main';
+import CaseStudyList from '../components/blog/CaseStudyList';
 import Sidebar from '../components/blog/Sidebar';
+import Member from '../components/blog/Member';
 
-import { Buton, Button, ButtonGroup } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Blog from "../components/blog/Blog";
 import About from '../components/about/About';
 import AboutImages from '../components/about/AboutImages';
 import News from '../components/news/News';
 
-const sections = [
-  { title: 'About', url: '#' },
-  { title: 'Case Study', url: '#' },
-  { title: 'Member', url: '#' },
-  { title: 'Links', url: '#' },
-];
+
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -38,25 +29,6 @@ const mainFeaturedPost = {
   imageText: 'main image description',
   linkText: 'Continue reading…',
 };
-
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-  },
-];
 
 const sidebar = {
   title: 'About',
@@ -84,28 +56,27 @@ const sidebar = {
 
 const theme = createTheme();
 
-export default function Home({ news, about, aboutImages, blog, caseStudies, cms }) {
-  const cases = caseStudies;
+export default function Home({ news, about, aboutImages, members}) {
+  console.log(news)
   return (
     <div className={styles.container}>
-      <Head>
-        <title>NJFA Blog Top</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
           <Container maxWidth="lg">
-            <Header title="NJENIA" sections={sections} />
             <main>
               <MainFeaturedPost post={mainFeaturedPost} />
               <News news={news}></News>
+              <Divider sx={{ margin: '0 0 10px 0' }}/>
               <About about={about} ></About>
               <AboutImages aboutImages={aboutImages}></AboutImages>
+              <Divider sx={{ margin: '0 0 10px 0' }} />
+              <Typography component="h2" variant="h4" align="left" sx={{ fontWeight: "bold"}}>Case Study</Typography>
+              <Grid container spacing={4} justifyContent='center'>
+                <CaseStudyList key={"test"} />
+              </Grid>
+              <Divider sx={{ margin: '10px' }} />
+              <Typography component="h2" variant="h4" align="left" sx={{ margin: '0 0 10px 0', fontWeight: "bold" }} >Member</Typography>
               <Grid container spacing={4}>
-                {cases.map((c) => (
-                  <FeaturedPost key={c.title} case={c} />
-                ))}
+                <Member members={members} />
               </Grid>
               <Grid container spacing={5} sx={{ mt: 3 }}>
                 <Sidebar
@@ -117,13 +88,7 @@ export default function Home({ news, about, aboutImages, blog, caseStudies, cms 
               </Grid>
             </main>
           </Container>
-          <Footer
-            title="Footer"
-            description="Something here to give the footer a purpose!"
-          />
-        </ThemeProvider>
       </div>
-      <Footer></Footer>
     </div>
   );
 }
@@ -132,46 +97,14 @@ export const getStaticProps = async () => {
   const about = await client.get({ endpoint: 'about' });
   const aboutImages = await client.get({ endpoint: 'about_image' });
   const news = await client.get({ endpoint: "news" });
-  const caseStudy = await client.get({ endpoint: "casestudy" });
-
-  let filtersCaseIDsQuery = '';
-  // console.log(caseStudy);
-  for (const i in caseStudy.contents) {
-    filtersCaseIDsQuery = `${filtersCaseIDsQuery}casestudy_id[equals]${caseStudy.contents[i].id}`;
-    if (i != caseStudy.contents.length - 1) {
-      filtersCaseIDsQuery += '[or]';
-    }
-  }
-
-  const caseStudyImages = await client.get({
-    endpoint: "casestudy_image",
-    queries: {
-      filters: filtersCaseIDsQuery,
-      fields: 'casestudy_id,category,image'
-    }
-  });
-
-  const caseStudies = [];
-  for (const c of caseStudy.contents) {
-    caseStudies.push({
-      id: c.id,
-      title: c.title,
-      summary: c.summary,
-      details: c.details,
-      createdAt: c.createdAt,
-      images: caseStudyImages.contents.filter((im) => im.casestudy_id.id == c.id)
-    });
-  }
+  const members = await client.get({ endpoint: "member" });
 
   return {
     props: {
       about: about.contents,
       aboutImages: aboutImages.contents,
-      caseStudies: caseStudies,
-      news: news.contents
-      // cms: {
-      //   posts: news.contents.map((post) => post.title)
-      // }
+      news: news.contents,
+      members: members.contents
     }
   }
 }

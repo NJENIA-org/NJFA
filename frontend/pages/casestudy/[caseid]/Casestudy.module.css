@@ -1,0 +1,38 @@
+.main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.publishedAt {
+  margin-bottom: 40px;
+}
+
+
+h1.post {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 40px 0 20px;
+  background-color: #eee;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+h2.post {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 40px 0 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+p.post {
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+ol.post {
+  list-style-type: decimal;
+  list-style-position: inside;
+}

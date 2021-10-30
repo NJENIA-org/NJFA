@@ -5,7 +5,7 @@ import Header from '../components/common/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
-import theme from './theme';
+import theme from '../styles/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import Footer from '../components/common/Footer';
 import { Container } from '@mui/material';

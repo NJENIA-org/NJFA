@@ -26,10 +26,6 @@ const mainFeaturedPost = {
   linkText: 'Continue reading…',
 };
 
-// const componetIDList = {
-//   news: "njenia-"
-// }
-
 const theme = createTheme();
 
 export default function Home({ news, about, aboutImages, members, componentIDList }) {

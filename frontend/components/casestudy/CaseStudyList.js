@@ -35,7 +35,7 @@ function CaseStudyList() {
     <Grid container spacing={4} justifyContent='center'>
       {data.case.map((c) => (
         <>
-          <Grid key={c.id} item xs={7} md={7}>
+          <Grid key={c.id} item xs={12} md={7}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={12}>
                 <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
@@ -54,10 +54,10 @@ function CaseStudyList() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={5} md={5}>
+          <Grid item xs={12} md={5}>
             <CardMedia
               component="img"
-              sx={{ width: "100%", display: { xs: 'none', sm: 'block' } }}
+              sx={{ width: "100%", display: { xs: 'block', sm: 'block' } }}
               image={getCategoryImageUrl(c.images, "summary_image") != '' ? getCategoryImageUrl(c.images, "summary_image") : 'njenia.png'}
               alt={c.title}
             />

@@ -5,10 +5,10 @@ export default function Member({ members }) {
   return (
     members.map((item) => (
       <Grid container spaceing={1} sx={{ pb: "5%" }}>
-        <Grid item xs={3} md={3}>
+        <Grid item xs={12} md={3}>
           <Avatar variant="square" alt={item.firstname} src={item.image.url} sx={{ width: 150, height: 150 }} />
         </Grid>
-        <Grid item xs={9} md={9}>
+        <Grid item xs={12} md={9}>
           <Typography variant="h6" sx={{ "white-space": "pre-line"}} >
             <b>
             {`${item.lastname}　${item.firstname}`} <br />

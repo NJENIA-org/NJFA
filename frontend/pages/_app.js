@@ -63,7 +63,7 @@ export default function MyApp(props) {
           <Footer
             title="NJENIA"
             copyright="NJENIA"
-            description="to be a Jenio..."
+            description="Be Genio..."
             socials={socials}
           />
         </Container>

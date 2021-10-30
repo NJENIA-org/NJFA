@@ -38,17 +38,17 @@ function CaseStudyList() {
           <Grid key={c.id} item xs={12} md={7}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={12}>
-                <Typography component="h2" variant="h5" sx={{ fontSize:"3vmin", fontWeight: "bold" }}>
+                <Typography component="h2" variant="h5" sx={{ fontSize:"3vh", fontWeight: "bold" }}>
                   {c.title}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
-                <Typography variant="h6" color="text.secondary" sx={{ fontSize:"3vmin"}}>
+                <Typography variant="h6" color="text.secondary" sx={{ fontSize:"2vh"}}>
                   {(new Date(c.createdAt)).toLocaleDateString()}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
-                <Typography variant="h6" paragraph sx={{ fontSize:"3vmin"}}>
+                <Typography variant="h6" variant="h4" align="left" paragraph sx={{ fontSize:"3vh", margin: "0 0 10px 0"}}>
                   {c.summary}
                 </Typography>
               </Grid>
@@ -64,7 +64,7 @@ function CaseStudyList() {
           </Grid>
           <Grid item xs={12} md={12}>
             <Link href={`/casestudy/${c.id}`} >
-              <Typography variant="h6" color="primary">
+              <Typography variant="h6" color="primary" sx={{ fontSize:"3vh"}}>
                 {"More Details..."}
               </Typography>
             </Link>

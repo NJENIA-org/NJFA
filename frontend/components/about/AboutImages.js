@@ -8,7 +8,7 @@ export default function AboutImages({ aboutImages }) {
             <Grid item xs={12} md={3}>
             </Grid>
             <Grid item xs={12} md={9}>
-                <ImageList cols={4}>
+                <ImageList cols={3}>
                     {aboutImages.map((item) => (
                         <ImageListItem sx={{ width: "100%", height: "auto" }}>
                             <img

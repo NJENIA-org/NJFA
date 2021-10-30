@@ -33,7 +33,7 @@ export default function News() {
         <div className={styles.area}>
             <Grid container spaceing={1}>
                 <Grid item xs={12} md={3} >
-                    <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "4vmin", fontWeight: "bold", margin: "0 0 10px 0" }}>News</Typography>
+                    <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "5vh", fontWeight: "bold", margin: "0 0 10px 0" }}>News</Typography>
                 </Grid>
 
                 <Grid item xs={12} md={9}>
@@ -43,7 +43,7 @@ export default function News() {
                                 {news.map((item) => (
                                     <ListItem disablePadding>
                                         <ListItemText primary={new Date(item.publishedAt).toLocaleDateString()} primaryTypographyProps={{
-                                            fontSize: "2vmin",
+                                            fontSize: "3vh",
                                             fontWeight: 'normal',
                                             letterSpacing: 0,
                                         }} />
@@ -55,7 +55,7 @@ export default function News() {
                                     <ListItem disablePadding>
                                         <Link href={`/news/${item.id}`}>
                                             <ListItemText primary={item.title} primaryTypographyProps={{
-                                                fontSize: "2vmin",
+                                                fontSize: "3vh",
                                                 fontWeight: 'normal',
                                                 letterSpacing: 0,
                                             }} />

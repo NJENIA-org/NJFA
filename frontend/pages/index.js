@@ -34,12 +34,12 @@ export default function Home({ about, aboutImages, members, componentIDList, blo
             </div>
             <Divider sx={{ margin: '0 0 10px 0' }} />
             <div id={componentIDList.filter((c) => c.component == 'Casestudy')[0].id}>
-              <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "4vmin", fontWeight: "bold", margin: "0 0 10px 0" }}>Case Study</Typography>
+              <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "5vh", fontWeight: "bold", margin: "0 0 10px 0" }}>Case Study</Typography>
               <CaseStudyList />
             </div>
             <Divider sx={{ margin: '10px' }} />
             <div id={componentIDList.filter((c) => c.component == 'Member')[0].id}>
-              <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "4vmin", fontWeight: "bold", margin: "0 0 10px 0" }}>Member</Typography>
+              <Typography component="h2" variant="h4" align="left" sx={{ fontSize: "5vh", fontWeight: "bold", margin: "0 0 10px 0" }}>Member</Typography>
               <Member members={members} />
             </div>
           </main>

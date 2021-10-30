@@ -19,7 +19,7 @@ function Footer(props) {
 
   return (
     <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6, "text-align": "center" }}>
-      <Container maxWidth="lg" alignItems="center">
+      <Container maxWidth="lg" >
         {socials.map((social) => (
           <Link
             variant="body1"

@@ -9,7 +9,7 @@ export default function Member({ members }) {
           <Avatar variant="square" alt={item.firstname} src={item.image.url} sx={{ width: 150, height: 150 }} />
         </Grid>
         <Grid item xs={9} md={9}>
-          <Typography variant="subtitle1" sx={{ "white-space": "pre-line"}} >
+          <Typography variant="h6" sx={{ "white-space": "pre-line"}} >
             <b>
             {`${item.lastname}　${item.firstname}`} <br />
             {`${item.role}`}<br />

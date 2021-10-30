@@ -1,11 +1,10 @@
-import styles from '../styles/Home.module.css';
-import { client } from "../libs/client";
+import styles from 'styles/Home.module.css';
+import { client } from "libs/client";
 
-import MainFeaturedPost from '../components/blog/MainFeaturedPost';
+import BlogTopImage from 'components/blogtop/BlogTopImage';
 import CaseStudyList from 'components/casestudy/CaseStudyList';
-import Member from '../components/member/Member';
+import Member from 'components/member/Member';
 
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
@@ -16,27 +15,17 @@ import AboutImages from 'components/about/AboutImages';
 import News from 'components/news/News';
 
 
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of",
-  image: 'njenia2.png',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
-
 const theme = createTheme();
 
-export default function Home({ news, about, aboutImages, members, componentIDList }) {
+export default function Home({ about, aboutImages, members, componentIDList, blogTopImageProps }) {
   return (
     <div className={styles.container}>
       <div>
         <Container maxWidth="lg">
           <main>
-            <MainFeaturedPost post={mainFeaturedPost} />
+            <BlogTopImage post={blogTopImageProps} />
             <div id={componentIDList.filter((c) => c.component == 'News')[0].id}>
-              <News news={news}></News>
+              <News />
             </div>
             <Divider sx={{ margin: '0 0 10px 0' }} />
             <div id={componentIDList.filter((c) => c.component == 'About')[0].id}>
@@ -51,7 +40,7 @@ export default function Home({ news, about, aboutImages, members, componentIDLis
             <Divider sx={{ margin: '10px' }} />
             <div id={componentIDList.filter((c) => c.component == 'Member')[0].id}>
               <Typography component="h2" variant="h4" align="left" sx={{ margin: '0 0 10px 0', fontWeight: "bold" }} >Member</Typography>
-                <Member members={members} />
+              <Member members={members} />
             </div>
           </main>
         </Container>
@@ -63,14 +52,12 @@ export default function Home({ news, about, aboutImages, members, componentIDLis
 export const getStaticProps = async () => {
   const about = await client.get({ endpoint: 'about' });
   const aboutImages = await client.get({ endpoint: 'about_image' });
-  const news = await client.get({ endpoint: "news" });
   const members = await client.get({ endpoint: "member" });
 
   return {
     props: {
       about: about.contents,
       aboutImages: aboutImages.contents,
-      news: news.contents,
       members: members.contents
     }
   }

@@ -13,7 +13,7 @@ const NEWS_NUM_PER_PEGE = 2;
 const newsListFetcher = async (url) => {
   let newsResponse = await fetch(url);
   newsResponse = await newsResponse.json();
-  console.log(newsResponse);
+
   return newsResponse;
 }
 

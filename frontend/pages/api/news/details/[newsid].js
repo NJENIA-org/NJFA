@@ -1,6 +1,6 @@
 import { client } from 'libs/client';
 
-export default async function casestudy(req, res) {
+export default async function getNewsDetails(req, res) {
 
   const newsid = req.query.newsid;
   const newsResponse = await client.get({

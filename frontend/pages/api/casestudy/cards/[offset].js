@@ -1,9 +1,6 @@
-import { client } from '../../../../libs/client';
+import { client } from 'libs/client';
 
 export default async function casecards(req, res){
-  console.log("case cards API Test");
-  console.log(req.query);
-  // console.log(req.headers);
   const offset = req.query.offset;
   const CASE_NUM_PER_PEGE = process.env.CASE_NUM_PER_PEGE;
 
@@ -16,7 +13,6 @@ export default async function casecards(req, res){
   });
 
   let filtersCaseIDsQuery = '';
-  // console.log(caseStudy);
   for (const i in caseStudy.contents) {
     filtersCaseIDsQuery = `${filtersCaseIDsQuery}casestudy_id[equals]${caseStudy.contents[i].id}`;
     if (i != caseStudy.contents.length - 1) {

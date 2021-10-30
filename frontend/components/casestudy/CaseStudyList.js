@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { Link, Divider } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -11,11 +10,9 @@ import { useState } from 'react';
 const CASE_NUM_PER_PEGE = 2;
 
 const caseFetcher = async (url) => {
-  console.log("offset url")
-  console.log(url);
-
   let caseResponse = await fetch(url);
   caseResponse = await caseResponse.json();
+
   return caseResponse;
 }
 
@@ -33,7 +30,6 @@ function CaseStudyList() {
     }
     return '';
   }
-  console.log(data);
 
   return (
     <Grid container spacing={4} justifyContent='center'>
@@ -42,13 +38,13 @@ function CaseStudyList() {
           <Grid key={c.id} item xs={7} md={7}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={12}>
-                <Typography component="h2" variant="h5">
+                <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
                   {c.title}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
                 <Typography variant="h6" color="text.secondary">
-                  {(new Date(c.createdAt)).toLocaleString()}
+                  {(new Date(c.createdAt)).toLocaleDateString()}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
@@ -59,14 +55,12 @@ function CaseStudyList() {
             </Grid>
           </Grid>
           <Grid item xs={5} md={5}>
-            {/* {getCategoryImageUrl(c.images, "summary_image") != '' && */}
-              <CardMedia
-                component="img"
-                sx={{ width: "auto", display: { xs: 'none', sm: 'block' } }}
-                image={getCategoryImageUrl(c.images, "summary_image") != '' ? getCategoryImageUrl(c.images, "summary_image"): 'njenia.png' }
-                alt={c.title}
-              />
-            {/* } */}
+            <CardMedia
+              component="img"
+              sx={{ width: "100%", display: { xs: 'none', sm: 'block' } }}
+              image={getCategoryImageUrl(c.images, "summary_image") != '' ? getCategoryImageUrl(c.images, "summary_image") : 'njenia.png'}
+              alt={c.title}
+            />
           </Grid>
           <Grid item xs={12} md={12}>
             <Link href={`/casestudy/${c.id}`} >
@@ -85,7 +79,7 @@ function CaseStudyList() {
         <Pagination
           count={Math.round(data.totalCount / CASE_NUM_PER_PEGE)}
           page={pageIndex}
-          onChange={(e, page) => { console.log(`page:${page}`); setPageIndex(page) }}
+          onChange={(e, page) => { setPageIndex(page) }}
           showFirstButton
           showLastButton
           sx={{ justifyContent: 'center' }}

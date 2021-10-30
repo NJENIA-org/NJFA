@@ -3,19 +3,10 @@ import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
-function MainFeaturedPost(props) {
+function BlogTopImage(props) {
   const { post } = props;
-  
-  // const { case } = props;
-
-  // const getImageUrl = (category) => {
-  //   case.image.filter((im) => {
-  //     im.category == category;
-  //   });
-  // }
 
   return (
     <Paper
@@ -43,7 +34,7 @@ function MainFeaturedPost(props) {
         }}
       />
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={8}>
           <Box
             sx={{
               position: 'relative',
@@ -57,9 +48,6 @@ function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
-              Case reading...
-            </Link>
           </Box>
         </Grid>
       </Grid>
@@ -67,23 +55,13 @@ function MainFeaturedPost(props) {
   );
 }
 
-// MainFeaturedPost.propTypes = {
-//   case: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     summary: PropTypes.string.isRequired,
-//     images: PropTypes.array.isRequired,
-//     title: PropTypes.string.isRequired,
-//     createdAt: PropTypes.string.isRequired
-//   }).isRequired,
-// };
-MainFeaturedPost.propTypes = {
+BlogTopImage.propTypes = {
   post: PropTypes.shape({
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     imageText: PropTypes.string.isRequired,
-    linkText: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default MainFeaturedPost;
+export default BlogTopImage;

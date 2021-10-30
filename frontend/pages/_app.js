@@ -11,7 +11,6 @@ import Footer from '../components/common/Footer';
 import { Container } from '@mui/material';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -36,15 +35,24 @@ const socials = [
   { name: 'Twitter', icon: TwitterIcon, url: "https://twitter.com/NJENIA_njlm" }
 ];
 
+const blogTopImageProps = {
+  title: 'Keep Growing -> Be Genio',
+  description:
+    "Better late than never",
+  image: 'njenia2.png', 
+  imageText: 'Main Logo',
+};
+
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   pageProps["componentIDList"] = componentIDList;
+  pageProps["blogTopImageProps"] = blogTopImageProps;
 
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <title>NJENIA Blog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/njenia.ico" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

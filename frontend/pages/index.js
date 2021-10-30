@@ -3,7 +3,7 @@ import { client } from "../libs/client";
 
 import MainFeaturedPost from '../components/blog/MainFeaturedPost';
 import CaseStudyList from 'components/casestudy/CaseStudyList';
-import Member from '../components/blog/Member';
+import Member from '../components/member/Member';
 
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -55,9 +55,7 @@ export default function Home({ news, about, aboutImages, members, componentIDLis
             <Divider sx={{ margin: '10px' }} />
             <div id={componentIDList.filter((c) => c.component == 'Member')[0].id}>
               <Typography component="h2" variant="h4" align="left" sx={{ margin: '0 0 10px 0', fontWeight: "bold" }} >Member</Typography>
-              <Grid container spacing={4}>
                 <Member members={members} />
-              </Grid>
             </div>
           </main>
         </Container>

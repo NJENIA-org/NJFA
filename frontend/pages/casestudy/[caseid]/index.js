@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import getConfig from 'next/config';
 import styles from "./Casestudy.module.css";
-
-const { publicRuntimeConfig } = getConfig();
-const { API_URL } = publicRuntimeConfig;
 
 const fetcher = async (url) => {
   let caseResponse = await fetch(url);

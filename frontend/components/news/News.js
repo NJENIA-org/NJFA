@@ -11,9 +11,6 @@ import { useState } from "react";
 const NEWS_NUM_PER_PEGE = 2;
 
 const newsListFetcher = async (url) => {
-  console.log("news url")
-  console.log(url);
-
   let newsResponse = await fetch(url);
   newsResponse = await newsResponse.json();
   console.log(newsResponse);
@@ -28,7 +25,6 @@ export default function News() {
   );
   if (!data) return <div>loading...</div>
   if (error) return <div>failed.</div>
-  console.log(data);
 
   const news = data.contents;
   const totalCount = data.totalCount;

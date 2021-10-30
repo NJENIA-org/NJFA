@@ -58,7 +58,7 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Container maxWidth="lg">
-          <Header title="NJENIA" sections={sections} />
+          <Header sx={{fontSize:"1vmin"}} title="NJENIA" sections={sections} />
           <Component {...pageProps} />
           <Footer
             title="NJENIA"

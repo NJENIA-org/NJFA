@@ -38,17 +38,17 @@ function CaseStudyList() {
           <Grid key={c.id} item xs={12} md={7}>
             <Grid container spacing={1}>
               <Grid item xs={12} md={12}>
-                <Typography component="h2" variant="h5" sx={{ fontWeight: "bold" }}>
+                <Typography component="h2" variant="h5" sx={{ fontSize:"3vmin", fontWeight: "bold" }}>
                   {c.title}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" color="text.secondary" sx={{ fontSize:"3vmin"}}>
                   {(new Date(c.createdAt)).toLocaleDateString()}
                 </Typography>
               </Grid>
               <Grid item xs={12} md={12}>
-                <Typography variant="h6" paragraph>
+                <Typography variant="h6" paragraph sx={{ fontSize:"3vmin"}}>
                   {c.summary}
                 </Typography>
               </Grid>
